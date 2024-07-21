@@ -196,7 +196,7 @@ function displayMessages() {
     const messages = [
         { element: message1, text: 'In your eyes, I find my home,', delay: 0 },
         { element: message2, text: 'In your smile, I find my peace.', delay: 1000 },
-        { element: finalMessage, text: 'With you, my love, life feels complete.', delay: 1000 }
+        { element: finalMessage, text: 'With you, my life feels complete. :)', delay: 1000 }
     ];
 
     let totalDelay = 0;

@@ -1,0 +1,43 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday!!</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="icon" href="img/flower.png" type="image/x-icon">
+</head>
+<body>
+    <div id="background"></div>
+    <div id="container">
+        <h1>Happy Birthday !!!</h1>
+        <p class="important"><i>You can proceed to show this masterpiece made by Sam to your friends if that is what you want!</i></p>
+        <p class="hi">Please enter the password to proceed :</p>
+        <form id="passwordForm">
+            <input type="password" placeholder="The password darling?" id="passwordInput" required>
+            <button type="submit" class="button-24" role="button">Enter</button>
+        </form>
+        <p id="errorMessage" class="error-message"></p>
+    </div>
+    <div id="loading" class="hidden">
+        <img src="img/loading.jpg" alt="Loading Image" id="loadingImage">
+        <p id="loadingText">Please wait up beautiful one...</p>
+    </div>
+    <div id="miniGame" class="hidden">
+        <h2>Welcome to the Sam's Mini Game!</h2>
+        <div id="gameContent" class="hidden">
+            <p>Find the hidden symbols to proceed to the next one!</p>
+            <div id="gameArea"></div>
+        </div>
+    </div>
+    <div id="messageDisplay" class="hidden">
+        <p id="message1"></p>
+        <p id="message2"></p>
+        <p id="finalMessage"></p>
+        <button id="nextButton" class="hidden">Next..?</button>
+    </div>    
+    <script src="js/index.js"></script>
+</body>
+</html>

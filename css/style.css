@@ -1,0 +1,390 @@
+body {
+    margin: 0;
+    height: 100vh;
+    background-color: black;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    font-family: 'Inter', sans-serif;
+}
+
+.hidden {
+    display: none;
+}
+
+#container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    box-shadow: rgba(255, 255, 255, 0.4) 0px 0px 0px 2px, rgba(252, 253, 253, 0.65) 0px 4px 6px -1px, rgba(255, 255, 255, 0.08) 0px 1px 0px inset;
+    border-radius: 10px;
+    padding: 20px;
+    text-align: center;
+    z-index: 2;
+    backdrop-filter: blur(13px);
+    opacity: 0;
+    animation: fadeIn 1s forwards;
+}
+
+@keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+}
+
+#container h1 {
+    margin-bottom: 10px;
+    font-size: 30px;
+    color: wheat;
+    padding: 5px;
+    border-radius: 5px;
+    display: inline-block;
+}
+
+#container input {
+    padding: 12px;
+    margin-bottom: 10px;
+}
+
+#container button {
+    transition: background-color 0.3s ease;
+    background: #FF4742;
+    border: 1px solid #FF4742;
+    box-shadow: rgba(0, 0, 0, 0.1) 1px 2px 4px;
+    box-sizing: border-box;
+    color: #FFFFFF;
+    cursor: pointer;
+    display: inline-block;
+    font-family: nunito, roboto, proxima-nova, "proxima nova", sans-serif;
+    font-size: 13px;
+    font-weight: 800;
+    line-height: 15px;
+    padding: 12px 14px;
+}
+
+#container button:hover {
+    background-color: black;
+}
+
+#container p {
+    color: white;
+}
+
+#container .important {
+    color: red;
+}
+
+#container .error-message {
+    color: red;
+}
+
+#passwordInput {
+    margin-right: 10px;
+    border-radius: 6px;
+    padding: 10px;
+    border: 2px solid #ccc;
+    transition: border-color 0.3s ease;
+}
+
+#loading {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    z-index: 3;
+    opacity: 0;
+    animation: fadeIn 1s forwards;
+}
+
+#loadingImage {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    margin-bottom: 10px;
+}
+
+#loadingText {
+    font-size: 20px;
+    color: white;
+    animation: loadingTextAnimation 2s infinite;
+}
+
+@keyframes loadingTextAnimation {
+    0% { opacity: 0.8; }
+    50% { opacity: 1; }
+    100% { opacity: 0.8; }
+}
+
+#miniGame {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    z-index: 3;
+    color: white;
+    opacity: 0;
+    animation: fadeIn 1s forwards;
+}
+
+#miniGame .hidden {
+    display: none;
+}
+
+#miniGame h2 {
+    animation: moveUp 1s forwards;
+}
+
+@keyframes moveUp {
+    0% {
+        opacity: 0;
+        transform: translateY(0);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(-50px);
+    }
+}
+
+#gameContent {
+    margin-top: 20px;
+    opacity: 0;
+    animation: fadeInDelayed 2s forwards;
+}
+
+@keyframes fadeInDelayed {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+}
+
+#gameArea {
+    display: grid;
+    grid-template-columns: repeat(5, 60px);
+    grid-gap: 10px;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.gridCell {
+    width: 60px;
+    height: 60px;
+    background-color: pink;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
+    color: red;
+    cursor: pointer;
+    transition: transform 0.6s;
+    transform-style: preserve-3d;
+}
+
+.gridCell.visited {
+    transform: rotateY(180deg);
+}
+
+.gridCell::before,
+.gridCell::after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    border-radius: 10px;
+}
+
+.gridCell::before {
+    background-color: pink;
+}
+
+.gridCell::after {
+    transform: rotateY(180deg);
+}
+
+span {
+    background: url("https://cdn4.iconfinder.com/data/icons/general-office/91/General_Office_54-256.png");
+    width: 100px;
+    height: 100px;
+    position: absolute;
+    pointer-events: none;
+    background-size: cover;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    animation: animate 8s linear;
+}
+
+@keyframes animate {
+    0% { transform: translate(-50%, -50%); opacity: 1; filter: hue-rotate(0); }
+    100% { transform: translate(-50%, -5000%); opacity: 0; filter: hue-rotate(1080deg); }
+}
+
+#background {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    z-index: 1;
+}
+
+@media (max-width: 768px) {
+    html, body {
+        overflow: hidden;
+        position: fixed;
+        width: 100%;
+        height: 100%;
+    }
+    #container {
+        width: 90%;
+        padding: 15px;
+    }
+    #container h1 {
+        font-size: 24px;
+    }
+    #container button {
+        padding: 10px 20px;
+        font-size: 12px;
+    }
+    span {
+        width: 50px;
+        height: 50px;
+    }
+}
+
+@media (max-width: 480px) {
+    html, body {
+        overflow: hidden;
+        position: fixed;
+        width: 100%;
+        height: 100%;
+    }
+    #container {
+        width: 90%;
+        padding: 10px;
+    }
+    #container h1 {
+        font-size: 20px;
+    }
+    #container .important {
+        font-size: 13px;
+    }
+    #container input {
+        padding: 8px;
+    }
+    #container button {
+        padding: 8px 16px;
+        font-size: 11px;
+    }
+    span {
+        width: 30px;
+        height: 30px;
+    }
+}
+
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10;
+}
+
+.modal-content {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.modal-button {
+    margin: 10px;
+    padding: 10px 20px;
+    border: none;
+    background-color: #FF4742;
+    color: white;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.modal-button:hover {
+    background-color: black;
+}
+
+.suure {
+    color: black;
+}
+
+.proceed-button {
+    background-color: #FF4742;
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin-top: 20px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.proceed-button:hover {
+    background-color: black;
+}
+
+
+#messageDisplay {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: white;
+    z-index: 4;
+}
+
+#messageDisplay p {
+    font-size: 24px;
+    margin: 10px 0;
+    opacity: 0;
+    transition: opacity 1s;
+}
+
+@media screen and (max-width: 768px) {
+    #messageDisplay p {
+        font-size: 21px;
+    }
+    
+}
+
+#nextButton {
+    margin-top: 20px;
+    padding: 10px 20px;
+    border: none;
+    background-color: #FF4742;
+    color: white;
+    cursor: pointer;
+    font-size: 16px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+#nextButton:hover {
+    background-color: black;
+}
+
+#nextButton.hidden {
+    display: none;
+}
+
